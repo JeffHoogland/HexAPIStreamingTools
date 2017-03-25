@@ -1,29 +1,41 @@
+import SimpleHTTPServer
 import SocketServer
+import string,cgi,time
 import json
+from os import curdir, sep
+from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 
-class MyTCPServer(SocketServer.ThreadingTCPServer):
-    allow_reuse_address = True
+class MyHandler(BaseHTTPRequestHandler):
 
-class MyTCPServerHandler(SocketServer.BaseRequestHandler):
-    def handle(self):
+    def handle_request(self):
         try:
-            data = self.request.recv(1024).strip().split("\n")
-            for l in data:
-                if l[0] == "{":
-                    #print l
-                    datadict =  json.loads(l)
-                    
-                    f = open('apioutput.txt', 'a')
-                    f.write("%s\n"%datadict)
-                    f.close()
-                    
-                    print(datadict)
-                    for d in datadict:
-                        print("%s : %s"%(d, datadict[d]))
+            self.send_response(200)
+            self.end_headers()
+            return
+        except IOError:
+            self.send_error(404,'File Not Found: %s' % self.path)
 
-        except Exception, e:
-            print "Exception wile receiving message: ", e
+    def do_GET(self):
+        self.handle_request()
 
-server = MyTCPServer(('127.0.0.1', 1234), MyTCPServerHandler)
-print "Server running on 1234"
-server.serve_forever()
+    def do_POST(self):
+        self.handle_request()
+        content_len = int(self.headers.getheader('content-length', 0))
+        post_body = json.loads(self.rfile.read(content_len))
+        print post_body
+        f = open('apioutput.txt', 'a')
+        f.write("%s\n"%post_body)
+        f.close()
+
+def main():
+    PORT = 1234
+    try:
+        server = HTTPServer(('', PORT), MyHandler)
+        print 'started httpserver on port %s...'%PORT
+        server.serve_forever()
+    except KeyboardInterrupt:
+        print '^C received, shutting down server'
+        server.socket.close()
+
+if __name__ == '__main__':
+    main()
