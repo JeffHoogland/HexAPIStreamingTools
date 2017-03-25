@@ -4,6 +4,7 @@ import string,cgi,time
 import json
 from os import curdir, sep
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
+from decklist import deckFormater
 
 class MyHandler(BaseHTTPRequestHandler):
 
@@ -22,10 +23,13 @@ class MyHandler(BaseHTTPRequestHandler):
         self.handle_request()
         content_len = int(self.headers.getheader('content-length', 0))
         post_body = json.loads(self.rfile.read(content_len))
-        print post_body
-        f = open('apioutput.txt', 'a')
-        f.write("%s\n"%post_body)
-        f.close()
+        #print post_body
+        #f = open('apioutput.txt', 'a')
+        #f.write("%s\n"%post_body)
+        #f.close()
+        if post_body["Message"] == "DeckSave":
+            print(post_body)
+            deckFormater().generateImage(post_body)
 
 def main():
     PORT = 1234
