@@ -27,9 +27,11 @@ class MyHandler(BaseHTTPRequestHandler):
         #f = open('apioutput.txt', 'a')
         #f.write("%s\n"%post_body)
         #f.close()
-        if post_body["Message"] == "DeckSave":
+        if post_body["Message"] == "SaveDeck":
             print(post_body)
             deckFormater().generateImage(post_body)
+        else:
+            print(post_body["Message"])
 
 def main():
     PORT = 1234
