@@ -47,7 +47,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setupAPIWindow.show()
     
     def reservesCheckBoxChecked(self):
-        self.HexAPI.setConfigValue("HexDeck", "showreserves", self.showReservesBox.checkState())
+        self.HexAPI.setConfigValue("HexDeck", "showreserves", self.showReservesBox.isChecked())
     
     def serverTogglePushed(self):
         if self.ourServer.isRunning():
