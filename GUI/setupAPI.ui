@@ -27,7 +27,7 @@
    <item>
     <widget class="QPushButton" name="selectAPIFileButton">
      <property name="text">
-      <string>Select API File</string>
+      <string>Select Hex Install Directory</string>
      </property>
     </widget>
    </item>
