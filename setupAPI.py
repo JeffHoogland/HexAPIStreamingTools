@@ -1,5 +1,6 @@
 
 import os
+import platform
 
 from PySide.QtGui import *
 from PySide.QtCore import *
@@ -9,6 +10,10 @@ from ui_setupAPI import Ui_setupAPI
 UserHome = os.path.expanduser("~")
 
 def findAPIFile():
+    if "windows" in platform.platform().lower():
+        #This code hard locks on Windows cause that os is poop
+        return None
+    
     likelyAPIPath = UserHome
     
     HexDIR = None

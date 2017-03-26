@@ -22,7 +22,7 @@ class HexAPI():
     def setupDefaultConfig(self):
         self.config.add_section("HexDeck")
         self.config.set("HexDeck", "outputpath", UserHome)
-        self.config.set("HexDeck", "showreserves", False)
+        self.config.set("HexDeck", "showreserves", "False")
         self.config.set("HexDeck", "lastname", None)
         
         with open(ConfigFile, 'wb') as configfileobj:
