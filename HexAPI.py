@@ -4,6 +4,8 @@ A Python Library for taking data from the HexTCG API and making it easy to use.
 
 import os
 import ConfigParser
+import platform
+import subprocess
 
 HexCardData = "HexCardData.csv"
 ConfigFile = "HexAPIPythonSettings.cfg"
@@ -124,7 +126,10 @@ class HexDeck():
                     f.write("%sx %s\n"%(self.ReadableReserves[card], card))
         f.close()
 
-        os.system('cd StackIt && python StackIt.py "%s/%s.txt"'%(self.OutputPath, self.DeckName))
+        if "windows" in platform.platform().lower()
+            subprocess.call(["StackIt.exe", "%s/%s.txt"'%(self.OutputPath, self.DeckName)])
+        else:
+            os.system('cd StackIt && python StackIt.py "%s/%s.txt"'%(self.OutputPath, self.DeckName))
         FinalImageLocation = "%s/LastDeckExport.png"%(self.OutputPath)
         if os.path.isfile(FinalImageLocation):
             os.remove(FinalImageLocation)
