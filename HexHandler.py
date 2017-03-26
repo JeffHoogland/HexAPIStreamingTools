@@ -1,6 +1,7 @@
-import SimpleHTTPServer
-import SocketServer
-import string,cgi,time
+"""
+A simple HandlerClass for getting raw data the Hex API serves up
+"""
+
 import json
 from os import curdir, sep
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
