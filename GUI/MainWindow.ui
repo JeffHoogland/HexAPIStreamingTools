@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>213</width>
-    <height>47</height>
+    <width>329</width>
+    <height>204</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,6 +15,42 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <widget class="QGroupBox" name="hexDeckBox">
+      <property name="title">
+       <string>Hex Deck Image Output Settings</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <widget class="QLineEdit" name="outputPathDisplay">
+         <property name="frame">
+          <bool>true</bool>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="outputPathButton">
+         <property name="text">
+          <string>Change Output Path</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="showReservesBox">
+         <property name="text">
+          <string>Show Reserves</string>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
     <item>
      <widget class="QPushButton" name="serverToggleButton">
       <property name="text">
@@ -24,6 +60,28 @@
     </item>
    </layout>
   </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>329</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuSetup">
+    <property name="title">
+     <string>Setup</string>
+    </property>
+    <addaction name="actionAdd_API_Entry"/>
+   </widget>
+   <addaction name="menuSetup"/>
+  </widget>
+  <action name="actionAdd_API_Entry">
+   <property name="text">
+    <string>Add API Entry</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

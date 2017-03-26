@@ -3,20 +3,45 @@ A Python Library for taking data from the HexTCG API and making it easy to use.
 """
 
 import os
+import ConfigParser
 
 HexCardData = "HexCardData.csv"
+ConfigFile = "HexAPIPythonSettings.cfg"
+UserHome = os.path.expanduser("~")
 
 class HexAPI():
+    def __init__(self):
+        self.config = ConfigParser.RawConfigParser()
+        if os.path.isfile(ConfigFile):
+            self.config.read(ConfigFile)
+        else:
+            self.setupDefaultConfig()
+    
+    def setupDefaultConfig(self):
+        self.config.add_section("HexDeck")
+        self.config.set("HexDeck", "outputpath", UserHome)
+        self.config.set("HexDeck", "showreserves", False)
+        
+        with open(ConfigFile, 'wb') as configfileobj:
+            self.config.write(configfileobj)
+    
+    def setConfigValue(self, section, option, value):
+        self.config.set(section, option, value)
+        
+        with open(ConfigFile, 'wb') as configfileobj:
+            self.config.write(configfileobj)
+        
     def newCall(self, data):
         if data["Message"] == "SaveDeck":
             if data["Name"].isdigit():
                 data["Name"] = ""
             
-            HexDeck(data).generateDeckImage()
+            HexDeck(data, self.config).generateDeckImage()
 
 class HexDeck():
-    def __init__(self, DeckData, OutputPath=os.path.expanduser("~")):
-        self.OutputPath = OutputPath
+    def __init__(self, DeckData, configFile):
+        self.OutputPath = configFile.get("HexDeck", "outputpath")
+        self.ShowReserves = configFile.getboolean("HexDeck", "showreserves")
         
         self.DeckName = DeckData["Name"]
         self.DeckChampion = DeckData["Champion"]
@@ -73,13 +98,13 @@ class HexDeck():
     def setOutputPath(self, OutputPath):
         self.OutputPath = OutputPath
 
-    def generateDeckImage(self, showReserves=False):
+    def generateDeckImage(self):
         f = open('%s/%s.txt'%(self.OutputPath, self.DeckName), 'w')
         f.write("Champion: %s\n"%self.DeckChampion)
         for ourtype in self.CardTypes:
             for card in self.DeckOrder[ourtype]:
                 f.write("%sx %s\n"%(self.ReadableDeck[card], card))
-        if showReserves:
+        if self.ShowReserves:
             for ourtype in self.CardTypes:
                 for card in self.ReservesOrder[ourtype]:
                     f.write("%sx %s\n"%(self.ReadableReserves[card], card))
