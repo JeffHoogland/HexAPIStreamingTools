@@ -1,0 +1,7 @@
+Scans/
+*.pyc
+CmcCache/
+settings.yml
+.vscode/
+testdecks/*.png
+!testdecks/StressTest1.png

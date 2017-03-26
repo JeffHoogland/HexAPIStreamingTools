@@ -1,0 +1,5 @@
+lxml
+pillow
+requests
+pyYAML
+future
