@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI/setupAPI.ui'
 #
-# Created: Sun Mar 26 09:04:33 2017
+# Created: Sun Mar 26 09:53:41 2017
 #      by: pyside-uic 0.2.15 running on PySide 1.2.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,27 +12,20 @@ from PySide import QtCore, QtGui
 class Ui_setupAPI(object):
     def setupUi(self, setupAPI):
         setupAPI.setObjectName("setupAPI")
-        setupAPI.resize(400, 137)
+        setupAPI.resize(374, 117)
         self.verticalLayout = QtGui.QVBoxLayout(setupAPI)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.frame = QtGui.QFrame(setupAPI)
-        self.frame.setFrameShape(QtGui.QFrame.StyledPanel)
-        self.frame.setFrameShadow(QtGui.QFrame.Raised)
-        self.frame.setObjectName("frame")
-        self.verticalLayout_3 = QtGui.QVBoxLayout(self.frame)
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.apiFileLocationDisplay = QtGui.QLineEdit(self.frame)
+        self.apiFileLocationDisplay = QtGui.QLineEdit(setupAPI)
         self.apiFileLocationDisplay.setDragEnabled(True)
         self.apiFileLocationDisplay.setReadOnly(True)
         self.apiFileLocationDisplay.setObjectName("apiFileLocationDisplay")
-        self.verticalLayout_3.addWidget(self.apiFileLocationDisplay)
-        self.selectAPIFileButton = QtGui.QPushButton(self.frame)
+        self.verticalLayout.addWidget(self.apiFileLocationDisplay)
+        self.selectAPIFileButton = QtGui.QPushButton(setupAPI)
         self.selectAPIFileButton.setObjectName("selectAPIFileButton")
-        self.verticalLayout_3.addWidget(self.selectAPIFileButton)
-        self.addAPIEntryButton = QtGui.QPushButton(self.frame)
+        self.verticalLayout.addWidget(self.selectAPIFileButton)
+        self.addAPIEntryButton = QtGui.QPushButton(setupAPI)
         self.addAPIEntryButton.setObjectName("addAPIEntryButton")
-        self.verticalLayout_3.addWidget(self.addAPIEntryButton)
-        self.verticalLayout.addWidget(self.frame)
+        self.verticalLayout.addWidget(self.addAPIEntryButton)
 
         self.retranslateUi(setupAPI)
         QtCore.QMetaObject.connectSlotsByName(setupAPI)
