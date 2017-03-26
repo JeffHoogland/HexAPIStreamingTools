@@ -74,7 +74,6 @@
      <string>Setup</string>
     </property>
     <addaction name="actionAdd_API_Entry"/>
-    <addaction name="actionDownload_StackIt"/>
    </widget>
    <addaction name="menuSetup"/>
   </widget>

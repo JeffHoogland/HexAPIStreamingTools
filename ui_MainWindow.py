@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI/MainWindow.ui'
 #
-# Created: Sun Mar 26 17:26:05 2017
+# Created: Sun Mar 26 17:31:46 2017
 #      by: pyside-uic 0.2.15 running on PySide 1.2.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -49,7 +49,6 @@ class Ui_MainWindow(object):
         self.actionDownload_StackIt = QtGui.QAction(MainWindow)
         self.actionDownload_StackIt.setObjectName("actionDownload_StackIt")
         self.menuSetup.addAction(self.actionAdd_API_Entry)
-        self.menuSetup.addAction(self.actionDownload_StackIt)
         self.menuBar.addAction(self.menuSetup.menuAction())
 
         self.retranslateUi(MainWindow)
