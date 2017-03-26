@@ -39,7 +39,7 @@ class HexAPI():
             if data["Name"].isdigit():
                 data["Name"] = self.config.get("HexDeck", "lastname")
             else:
-                self.config.set("HexDeck", "lastname", data["Name"])
+                self.setConfigValue("HexDeck", "lastname", data["Name"])
             
             HexDeck(data, self.config).generateDeckImage()
 
