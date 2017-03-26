@@ -1,18 +1,15 @@
 # Hex API Streaming Tools
 
-This is a collection of python scripts that tie into the [HexTCG](https://www.hextcg.com/) client side API to provide added value for twitch streams.
+This is a collection of python scripts and a pyside GUI that tie into the [HexTCG](https://www.hextcg.com/) client side API to provide added value for twitch streams.
+
+![alt text](http://i.imgur.com/W3qNu2f.png "Hex API Dashboard")
 
 By: [Jeff Hoogland](http://www.jeffhoogland.com/)
 
 Usage:
-Add the line line: **http://127.0.0.1:1234|All**
-To your **api.ini** file for Hex
-
-Run listener.py with python
-
-WIP Features:
-- decklist.py - Integration with [StackIt](https://github.com/poppu-mtg/StackIt) to automatically general visual decklists.
+Launch MainWindow.py with Python 2.7 and use the setup menu to add the API settings. Then start the Listener.
 
 Requires: 
 - [python 2.7](https://www.python.org/downloads/)
+- [pyside](http://qt-project.org/wiki/PySideDownloads)
 - [StackIt](https://github.com/poppu-mtg/StackIt)

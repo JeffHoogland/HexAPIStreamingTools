@@ -21,6 +21,7 @@ class HexAPI():
         self.config.add_section("HexDeck")
         self.config.set("HexDeck", "outputpath", UserHome)
         self.config.set("HexDeck", "showreserves", False)
+        self.config.set("HexDeck", "lastname", None)
         
         with open(ConfigFile, 'wb') as configfileobj:
             self.config.write(configfileobj)
@@ -34,7 +35,9 @@ class HexAPI():
     def newCall(self, data):
         if data["Message"] == "SaveDeck":
             if data["Name"].isdigit():
-                data["Name"] = ""
+                data["Name"] = self.config.get("HexDeck", "lastname")
+            else:
+                self.config.set("HexDeck", "lastname", data["Name"])
             
             HexDeck(data, self.config).generateDeckImage()
 
@@ -48,6 +51,9 @@ class HexDeck():
         
         self.CardKey = {}
         self.CardTypes = ["Troop","Action","other","Resource"]
+        
+        ShardTypes = ["Wild Shard", "Ruby Shard", "Sapphire Shard", "Diamond Shard", "Blood Shard"]
+        DeckShards = []
 
         self.ReadableDeck = {}
         self.DeckOrder = {"Troop":[],"Action":[],"other":[],"Resource":[]}
@@ -66,6 +72,8 @@ class HexDeck():
         for d in DeckData["Deck"]:
             CardName = self.CardKey[d["Guid"]["m_Guid"]]["name"]
             CardType = self.CardKey[d["Guid"]["m_Guid"]]["type"]
+            if CardName in ShardTypes and CardName.split(" ")[0] not in DeckShards:
+                DeckShards.append(CardName.split(" ")[0])
             #print(CardName)
             if CardType not in self.CardTypes:
                 CardType = "other"
@@ -75,6 +83,12 @@ class HexDeck():
             else:
                 self.ReadableDeck[CardName] = 1
                 self.DeckOrder[CardType].append(CardName)
+
+        if len(DeckData["Deck"]) < 60:
+            self.DeckName = ""
+            for s in DeckShards:
+                self.DeckName = "%s[%s]"%(self.DeckName, s.upper())
+            self.DeckName = "%sLimited"%(self.DeckName)
 
         for d in self.DeckOrder:
             self.DeckOrder[d].sort()

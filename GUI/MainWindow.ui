@@ -74,12 +74,18 @@
      <string>Setup</string>
     </property>
     <addaction name="actionAdd_API_Entry"/>
+    <addaction name="actionDownload_StackIt"/>
    </widget>
    <addaction name="menuSetup"/>
   </widget>
   <action name="actionAdd_API_Entry">
    <property name="text">
     <string>Add API Entry</string>
+   </property>
+  </action>
+  <action name="actionDownload_StackIt">
+   <property name="text">
+    <string>Download StackIt</string>
    </property>
   </action>
  </widget>
