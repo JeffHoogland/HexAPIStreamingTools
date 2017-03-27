@@ -59,6 +59,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.serverToggleButton.setText('Start API Listener')
             self.serverToggleButton.setEnabled(True)
         else:
+            self.ourServer.setupServer(int(self.HexAPI.config.get("General", "port")))
             self.ourServer.start()
             self.serverToggleButton.setEnabled(False)
             while not self.ourServer.isRunning():
@@ -77,7 +78,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 class ServerThread(QThread):
     def __init__(self, parent = None):
         QThread.__init__(self, parent)
-        self.listener = HTTPServer(('', 1235), HexHandler)
+    
+    def setupServer(self, portNumber):
+        self.listener = HTTPServer(('', portNumber), HexHandler)
     
     def run(self):
         self.listener.serve_forever()

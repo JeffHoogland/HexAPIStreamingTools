@@ -7,6 +7,8 @@ from PySide.QtCore import *
 
 from ui_setupAPI import Ui_setupAPI
 
+from HexAPI import HexAPI
+
 UserHome = os.path.expanduser("~")
 
 def findAPIFile():
@@ -84,6 +86,7 @@ class setupAPI(QDialog, Ui_setupAPI):
         if self.HexAPIFile:
             with open(self.HexAPIFile, 'a+') as APIFile:
                 APIFile.write("\n")
-                APIFile.write("http://127.0.0.1:1235|All\n")
+                APIFile.write("http://127.0.0.1:%s|All\n"%self.portSpin.value())
+                HexAPI().setConfigValue("General", "port", self.portSpin.value())
         else:
             self.selectAPIFilePushed()
