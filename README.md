@@ -4,6 +4,8 @@ This is a collection of python scripts and a pyside GUI that tie into the [HexTC
 
 ![alt text](http://i.imgur.com/W3qNu2f.png "Hex API Dashboard")
 
+![alt text](http://i.imgur.com/w9zNNNi.png "StackIt Decklist Export")
+
 By: [Jeff Hoogland](http://www.jeffhoogland.com/)
 
 # Installation
