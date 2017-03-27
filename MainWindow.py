@@ -59,7 +59,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.serverToggleButton.setText('Start API Listener')
             self.serverToggleButton.setEnabled(True)
         else:
-            self.ourServer.setupServer(int(self.HexAPI.config.get("General", "port")))
+            self.ourServer.setupServer(int(self.HexAPI.getConfigValue("General", "port")))
             self.ourServer.start()
             self.serverToggleButton.setEnabled(False)
             while not self.ourServer.isRunning():

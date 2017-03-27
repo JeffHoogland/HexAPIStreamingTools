@@ -37,6 +37,10 @@ class HexAPI():
         
         with open(ConfigFile, 'wb') as configfileobj:
             self.config.write(configfileobj)
+    
+    def getConfigValue(self, section, option):
+        self.config.read(ConfigFile)
+        return self.config.get(section, option)
         
     def newCall(self, data):
         if data["Message"] == "SaveDeck":
