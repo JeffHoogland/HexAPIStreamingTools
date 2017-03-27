@@ -7,7 +7,7 @@ import ConfigParser
 import platform
 import subprocess
 if "windows" in platform.platform().lower():
-    import win32file
+    import shutil
 
 HexCardData = "HexCardData.csv"
 ConfigFile = "HexAPIPythonSettings.cfg"
@@ -18,11 +18,13 @@ class HexAPI():
         self.config = ConfigParser.RawConfigParser()
         if os.path.isfile(ConfigFile):
             self.config.read(ConfigFile)
+            if self.config.get("General", "newconfig") == "True":
+                self.setupDefaultConfig()
         else:
             self.setupDefaultConfig()
     
     def setupDefaultConfig(self):
-        self.config.add_section("HexDeck")
+        self.config.set("General", "newconfig", False)
         self.config.set("HexDeck", "outputpath", UserHome)
         self.config.set("HexDeck", "showreserves", "False")
         self.config.set("HexDeck", "lastname", None)
@@ -123,6 +125,7 @@ class HexDeck():
             for card in self.DeckOrder[ourtype]:
                 f.write("%sx %s\n"%(self.ReadableDeck[card], card))
         if self.ShowReserves:
+            f.write("Reserves\n")
             for ourtype in self.CardTypes:
                 for card in self.ReservesOrder[ourtype]:
                     f.write("%sx %s\n"%(self.ReadableReserves[card], card))
@@ -136,6 +139,6 @@ class HexDeck():
         if os.path.isfile(FinalImageLocation):
             os.remove(FinalImageLocation)
         if "windows" in platform.platform().lower():
-            win32file.CreateSymbolicLink("%s/%s.png"%(self.OutputPath, self.DeckName), FinalImageLocation, 1)
+            shutil.copyfileobj("%s/%s.png"%(self.OutputPath, self.DeckName), FinalImageLocation)
         else:
             os.symlink("%s/%s.png"%(self.OutputPath, self.DeckName), FinalImageLocation)

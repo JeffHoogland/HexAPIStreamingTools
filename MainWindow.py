@@ -77,7 +77,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 class ServerThread(QThread):
     def __init__(self, parent = None):
         QThread.__init__(self, parent)
-        self.listener = HTTPServer(('', 1234), HexHandler)
+        self.listener = HTTPServer(('', 1235), HexHandler)
     
     def run(self):
         self.listener.serve_forever()
