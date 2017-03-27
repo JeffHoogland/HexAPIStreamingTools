@@ -81,5 +81,9 @@ class setupAPI(QDialog, Ui_setupAPI):
             self.HexAPIFile = filePath
     
     def addAPIEntryPushed(self):
-        with open(self.HexAPIFile, 'a+') as APIFile:
-            APIFile.write("http://127.0.0.1:1234|All\n")
+        if self.HexAPIFile:
+            with open(self.HexAPIFile, 'a+') as APIFile:
+                APIFile.write("\n")
+                APIFile.write("http://127.0.0.1:1234|All\n")
+        else:
+            self.selectAPIFilePushed()
