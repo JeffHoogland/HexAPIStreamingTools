@@ -84,6 +84,6 @@ class setupAPI(QDialog, Ui_setupAPI):
         if self.HexAPIFile:
             with open(self.HexAPIFile, 'a+') as APIFile:
                 APIFile.write("\n")
-                APIFile.write("http://127.0.0.1:1234|All\n")
+                APIFile.write("http://127.0.0.1:1235|All\n")
         else:
             self.selectAPIFilePushed()

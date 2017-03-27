@@ -29,7 +29,7 @@ class HexHandler(BaseHTTPRequestHandler):
         HexAPI().newCall(post_body)
 
 def main():
-    PORT = 1234
+    PORT = 1235
     try:
         server = HTTPServer(('', PORT), HexHandler)
         print 'started httpserver on port %s...'%PORT
