@@ -23,9 +23,9 @@ class HexHandler(BaseHTTPRequestHandler):
         self.handle_request()
         content_len = int(self.headers.getheader('content-length', 0))
         post_body = json.loads(self.rfile.read(content_len))
-        f = open('apioutput.txt', 'a')
-        f.write("%s\n"%post_body)
-        f.close()
+        #f = open('apioutput.txt', 'a')
+        #f.write("%s\n"%post_body)
+        #f.close()
         HexAPI().newCall(post_body)
 
 def main():
