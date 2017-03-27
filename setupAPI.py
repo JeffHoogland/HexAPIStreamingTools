@@ -88,5 +88,6 @@ class setupAPI(QDialog, Ui_setupAPI):
                 APIFile.write("\n")
                 APIFile.write("http://127.0.0.1:%s|All\n"%self.portSpin.value())
                 HexAPI().setConfigValue("General", "port", self.portSpin.value())
+            self.hide()
         else:
             self.selectAPIFilePushed()

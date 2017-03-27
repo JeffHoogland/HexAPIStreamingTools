@@ -80,6 +80,7 @@ class ServerThread(QThread):
         QThread.__init__(self, parent)
     
     def setupServer(self, portNumber):
+        print("Starting listener on port number %s"%portNumber)
         self.listener = HTTPServer(('', portNumber), HexHandler)
     
     def run(self):

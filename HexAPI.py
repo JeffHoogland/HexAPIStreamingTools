@@ -143,6 +143,6 @@ class HexDeck():
         if os.path.isfile(FinalImageLocation):
             os.remove(FinalImageLocation)
         if "windows" in platform.platform().lower():
-            shutil.copyfileobj("%s/%s.png"%(self.OutputPath, self.DeckName), FinalImageLocation)
+            shutil.copy("%s/%s.png"%(self.OutputPath, self.DeckName), FinalImageLocation)
         else:
             os.symlink("%s/%s.png"%(self.OutputPath, self.DeckName), FinalImageLocation)
