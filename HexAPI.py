@@ -6,6 +6,8 @@ import os
 import ConfigParser
 import platform
 import subprocess
+if "windows" in platform.platform().lower():
+    import win32file
 
 HexCardData = "HexCardData.csv"
 ConfigFile = "HexAPIPythonSettings.cfg"
@@ -133,4 +135,7 @@ class HexDeck():
         FinalImageLocation = "%s/LastDeckExport.png"%(self.OutputPath)
         if os.path.isfile(FinalImageLocation):
             os.remove(FinalImageLocation)
-        os.symlink("%s/%s.png"%(self.OutputPath, self.DeckName), FinalImageLocation)
+        if "windows" in platform.platform().lower():
+            win32file.CreateSymbolicLink("%s/%s.png"%(self.OutputPath, self.DeckName), FinalImageLocation, 1)
+        else:
+            os.symlink("%s/%s.png"%(self.OutputPath, self.DeckName), FinalImageLocation)
