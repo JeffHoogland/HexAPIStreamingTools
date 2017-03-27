@@ -6,8 +6,7 @@ import os
 import ConfigParser
 import platform
 import subprocess
-if "windows" in platform.platform().lower():
-    import shutil
+import shutil
 
 HexCardData = "HexCardData.csv"
 ConfigFile = "HexAPIPythonSettings.cfg"
@@ -46,15 +45,25 @@ class HexAPI():
         if data["Message"] == "SaveDeck":
             if data["Name"].isdigit():
                 data["Name"] = self.config.get("HexDeck", "lastname")
+                data["Maindeck"] = False
             else:
                 self.setConfigValue("HexDeck", "lastname", data["Name"])
+                data["Maindeck"] = True
             
             HexDeck(data, self.config).generateDeckImage()
+        elif data["Message"] == "GameEnded":
+            OutputPath = self.config.get("HexDeck", "outputpath")
+            FinalImageLocation = "%s/LastDeckExport.png"%(OutputPath)
+            if os.path.isfile(FinalImageLocation):
+                os.remove(FinalImageLocation)
+            shutil.copy("%s/Maindeck.png"%(OutputPath), FinalImageLocation)
 
 class HexDeck():
     def __init__(self, DeckData, configFile):
         self.OutputPath = configFile.get("HexDeck", "outputpath")
         self.ShowReserves = configFile.getboolean("HexDeck", "showreserves")
+        
+        self.isMainDeck = DeckData["Maindeck"]
         
         self.DeckName = DeckData["Name"]
         self.DeckChampion = DeckData["Champion"]
@@ -146,3 +155,9 @@ class HexDeck():
             shutil.copy("%s/%s.png"%(self.OutputPath, self.DeckName), FinalImageLocation)
         else:
             os.symlink("%s/%s.png"%(self.OutputPath, self.DeckName), FinalImageLocation)
+        
+        if self.isMainDeck:
+            FinalImageLocation = "%s/Maindeck.png"%(self.OutputPath)
+            if os.path.isfile(FinalImageLocation):
+                os.remove(FinalImageLocation)
+            shutil.copy("%s/%s.png"%(self.OutputPath, self.DeckName), FinalImageLocation)
