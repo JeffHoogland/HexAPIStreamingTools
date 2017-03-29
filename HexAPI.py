@@ -42,6 +42,9 @@ class HexAPI():
         return self.config.get(section, option)
         
     def newCall(self, data):
+        #f = open('apioutput.txt', 'a')
+        #f.write("%s\n"%data)
+        #f.close()
         if data["Message"] == "SaveDeck":
             if data["Name"].isdigit():
                 data["Name"] = self.config.get("HexDeck", "lastname")
@@ -57,6 +60,9 @@ class HexAPI():
             if os.path.isfile(FinalImageLocation):
                 os.remove(FinalImageLocation)
             shutil.copy("%s/Maindeck.png"%(OutputPath), FinalImageLocation)
+        elif data["Message"] == "CardUpdated":
+            if data["Collection"] == 2:
+                print("You drew a %s"%data["Name"])
 
 class HexDeck():
     def __init__(self, DeckData, configFile):
