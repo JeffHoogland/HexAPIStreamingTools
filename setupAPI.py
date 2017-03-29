@@ -15,9 +15,15 @@ def findAPIFile():
     if "windows" in platform.platform().lower():
         #This code hard locks on Windows cause that os is poop
         #return None
-        likelyAPIPaths = ["C:\Program Files (x86)\HEX", "C:\Program Files\HEX",
-            "C:\Program Files (x86)\steam\steamapps\common\HEX SHARDS OF FATE",
-            "C:\Program Files\steam\steamapps\common\HEX SHARDS OF FATE"]
+        DriveLetters = ["C", "D", "E", "F", "G", "Z"]
+        HexPaths = [":\Program Files (x86)\HEX", ":\Program Files\HEX",
+            ":\Program Files (x86)\steam\steamapps\common\HEX SHARDS OF FATE",
+            ":\Program Files\steam\steamapps\common\HEX SHARDS OF FATE"]
+        likelyAPIPaths = []
+        for l in DriveLetters:
+            for p in HexPaths:
+                likelyAPIPaths.append("%s%s"%(l,p))
+        print(likelyAPIPaths)
     else:
         likelyAPIPaths = [UserHome]
     
