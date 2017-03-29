@@ -35,3 +35,7 @@ By: [Jeff Hoogland](http://www.jeffhoogland.com/)
 
 While the Listener is running decklists will automatically be populated in your output directory whenever you save a decklist in game. 
 You can point your streaming software, such as OBS, to the *LastDeckExport.png* image. This is updated every time you save a new deck.
+
+# Trouble Shooting
+
+If the Listener starts, but does not seem to be getting any data, check your [firewall settings](https://github.com/JeffHoogland/HexAPIStreamingTools/wiki/Configuring-Windows-Firewall-with-API-Tools).
