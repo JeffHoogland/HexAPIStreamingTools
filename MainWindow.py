@@ -84,6 +84,8 @@ class ServerThread(QThread):
         self.listener = HTTPServer(('', portNumber), HexHandler)
     
     def run(self):
+        self.listener.allow_reuse_address = True
+        self.listener.server_activate()
         self.listener.serve_forever()
 
 if __name__ == '__main__':
