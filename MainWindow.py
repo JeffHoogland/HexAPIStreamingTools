@@ -40,7 +40,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.showReservesBox.setChecked(self.HexAPI.config.getboolean("HexDeck", "showreserves"))
         self.showReservesBox.stateChanged.connect(self.reservesCheckBoxChecked)
         
+        self.emailAlertsCheck.setChecked(self.HexAPI.config.getboolean("Alerts", "enabled"))
+        self.emailAlertsCheck.stateChanged.connect(self.alertsCheckBoxChecked)
+        
         self.actionAdd_API_Entry.triggered.connect(self.showSetupAPI)
+        
+        if self.HexAPI.getConfigValue("Alerts", "email") != "None":
+            self.emailEntry.setText(self.HexAPI.getConfigValue("Alerts", "email"))
+            self.passwordEntry.setText(self.HexAPI.getConfigValue("Alerts", "password"))
     
     def showSetupAPI(self):
         self.setupAPIWindow.start()
@@ -48,6 +55,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     
     def reservesCheckBoxChecked(self):
         self.HexAPI.setConfigValue("HexDeck", "showreserves", self.showReservesBox.isChecked())
+    
+    def alertsCheckBoxChecked(self):
+        self.HexAPI.setConfigValue("Alerts", "enabled", self.emailAlertsCheck.isChecked())
+        if self.emailAlertsCheck.isChecked():
+            self.HexAPI.setConfigValue("Alerts", "email", self.emailEntry.text())
+            self.HexAPI.setConfigValue("Alerts", "password", self.passwordEntry.text())
+        else:
+            #self.HexAPI.setConfigValue("Alerts", "email", None)
+            #self.HexAPI.setConfigValue("Alerts", "password", None)
+            pass
     
     def serverTogglePushed(self):
         if self.ourServer.isRunning():

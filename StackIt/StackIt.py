@@ -233,6 +233,8 @@ elif deck_list.game == decklist.HEX:
     fnt_title = ImageFont.truetype("Arial Bold.ttf", 18)
     title = Image.new("RGB", (320,34), "black")
     nametitle = str(sys.argv[1])[0:-4]
+    for x in ["[INVINCIBLE]", "[ATK]"]:
+        nametitle = nametitle.replace(x, "")
     nshard = 0
     for shard in ['[DIAMOND]', '[SAPPHIRE]', '[BLOOD]', '[RUBY]', '[WILD]']:
         #print nametitle,nshard

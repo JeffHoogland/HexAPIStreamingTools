@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>329</width>
-    <height>204</height>
+    <height>410</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -45,6 +45,50 @@
          </property>
          <property name="checked">
           <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="alertsBox">
+      <property name="title">
+       <string>Round Alert Settings</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string>Gmail Login Name</string>
+         </property>
+         <layout class="QVBoxLayout" name="emailEntryBox">
+          <item>
+           <widget class="QLineEdit" name="emailEntry"/>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="title">
+          <string>Password</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QLineEdit" name="passwordEntry">
+            <property name="echoMode">
+             <enum>QLineEdit::Password</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="emailAlertsCheck">
+         <property name="text">
+          <string>Enable Email Alerts</string>
          </property>
         </widget>
        </item>

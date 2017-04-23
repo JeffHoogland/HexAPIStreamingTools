@@ -92,7 +92,7 @@ class setupAPI(QDialog, Ui_setupAPI):
         if self.HexAPIFile:
             with open(self.HexAPIFile, 'a+') as APIFile:
                 APIFile.write("\n")
-                APIFile.write("http://localhost:%s|SaveDeck|GameEnded\n"%self.portSpin.value())
+                APIFile.write("http://localhost:%s|SaveDeck|GameEnded|GameStarted\n"%self.portSpin.value())
                 HexAPI().setConfigValue("General", "port", self.portSpin.value())
             self.hide()
         else:

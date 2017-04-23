@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI/setupAPI.ui'
 #
-# Created: Mon Mar 27 13:50:47 2017
+# Created: Sun Apr 23 14:31:20 2017
 #      by: pyside-uic 0.2.15 running on PySide 1.2.2
 #
 # WARNING! All changes made in this file will be lost!

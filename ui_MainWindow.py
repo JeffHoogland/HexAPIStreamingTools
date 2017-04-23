@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI/MainWindow.ui'
 #
-# Created: Mon Mar 27 13:50:47 2017
+# Created: Sun Apr 23 14:31:20 2017
 #      by: pyside-uic 0.2.15 running on PySide 1.2.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,7 +12,7 @@ from PySide import QtCore, QtGui
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(329, 204)
+        MainWindow.resize(329, 410)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_2 = QtGui.QVBoxLayout(self.centralwidget)
@@ -34,6 +34,31 @@ class Ui_MainWindow(object):
         self.showReservesBox.setObjectName("showReservesBox")
         self.verticalLayout_4.addWidget(self.showReservesBox)
         self.verticalLayout_2.addWidget(self.hexDeckBox)
+        self.alertsBox = QtGui.QGroupBox(self.centralwidget)
+        self.alertsBox.setObjectName("alertsBox")
+        self.verticalLayout = QtGui.QVBoxLayout(self.alertsBox)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.groupBox = QtGui.QGroupBox(self.alertsBox)
+        self.groupBox.setObjectName("groupBox")
+        self.emailEntryBox = QtGui.QVBoxLayout(self.groupBox)
+        self.emailEntryBox.setObjectName("emailEntryBox")
+        self.emailEntry = QtGui.QLineEdit(self.groupBox)
+        self.emailEntry.setObjectName("emailEntry")
+        self.emailEntryBox.addWidget(self.emailEntry)
+        self.verticalLayout.addWidget(self.groupBox)
+        self.groupBox_2 = QtGui.QGroupBox(self.alertsBox)
+        self.groupBox_2.setObjectName("groupBox_2")
+        self.verticalLayout_3 = QtGui.QVBoxLayout(self.groupBox_2)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.passwordEntry = QtGui.QLineEdit(self.groupBox_2)
+        self.passwordEntry.setEchoMode(QtGui.QLineEdit.Password)
+        self.passwordEntry.setObjectName("passwordEntry")
+        self.verticalLayout_3.addWidget(self.passwordEntry)
+        self.verticalLayout.addWidget(self.groupBox_2)
+        self.emailAlertsCheck = QtGui.QCheckBox(self.alertsBox)
+        self.emailAlertsCheck.setObjectName("emailAlertsCheck")
+        self.verticalLayout.addWidget(self.emailAlertsCheck)
+        self.verticalLayout_2.addWidget(self.alertsBox)
         self.serverToggleButton = QtGui.QPushButton(self.centralwidget)
         self.serverToggleButton.setObjectName("serverToggleButton")
         self.verticalLayout_2.addWidget(self.serverToggleButton)
@@ -59,6 +84,10 @@ class Ui_MainWindow(object):
         self.hexDeckBox.setTitle(QtGui.QApplication.translate("MainWindow", "Hex Deck Image Output Settings", None, QtGui.QApplication.UnicodeUTF8))
         self.outputPathButton.setText(QtGui.QApplication.translate("MainWindow", "Change Output Path", None, QtGui.QApplication.UnicodeUTF8))
         self.showReservesBox.setText(QtGui.QApplication.translate("MainWindow", "Show Reserves", None, QtGui.QApplication.UnicodeUTF8))
+        self.alertsBox.setTitle(QtGui.QApplication.translate("MainWindow", "Round Alert Settings", None, QtGui.QApplication.UnicodeUTF8))
+        self.groupBox.setTitle(QtGui.QApplication.translate("MainWindow", "Gmail Login Name", None, QtGui.QApplication.UnicodeUTF8))
+        self.groupBox_2.setTitle(QtGui.QApplication.translate("MainWindow", "Password", None, QtGui.QApplication.UnicodeUTF8))
+        self.emailAlertsCheck.setText(QtGui.QApplication.translate("MainWindow", "Enable Email Alerts", None, QtGui.QApplication.UnicodeUTF8))
         self.serverToggleButton.setText(QtGui.QApplication.translate("MainWindow", "Start API Listener", None, QtGui.QApplication.UnicodeUTF8))
         self.menuSetup.setTitle(QtGui.QApplication.translate("MainWindow", "Setup", None, QtGui.QApplication.UnicodeUTF8))
         self.actionAdd_API_Entry.setText(QtGui.QApplication.translate("MainWindow", "Add API Entry", None, QtGui.QApplication.UnicodeUTF8))
