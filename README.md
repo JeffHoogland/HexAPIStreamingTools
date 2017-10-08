@@ -10,18 +10,10 @@ By: [Jeff Hoogland](http://www.jeffhoogland.com/)
 
 # Installation
 
-**Windows:** 
-
-* Download and extract the latest [compiled version](https://github.com/JeffHoogland/HexAPIStreamingTools/raw/master/HexAPIDashboard-Windows.zip). 
-* Make sure all five files included in the zip are in the same extracted directory.
-* Run MainWindow.exe
-
-**Other OS:** 
-
 * Install [Python 2.7](https://www.python.org/downloads/) 
 * Install [Pip](https://pip.pypa.io/en/stable/installing/)
-* Download the latest source code
-* Navigate to the source code directory and run: *pip install -r requirements.txt*
+* Download the [latest source code](https://github.com/JeffHoogland/HexAPIStreamingTools/archive/master.zip)
+* Extract and Navigate to the source code directory and run: *pip install -r requirements.txt*
 * Run: *python MainWindow.py*
 
 # Configuration

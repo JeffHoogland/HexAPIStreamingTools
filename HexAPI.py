@@ -183,10 +183,11 @@ class HexDeck():
                     f.write("%sx %s\n"%(self.ReadableReserves[card], card))
         f.close()
 
-        if "windows" in platform.platform().lower():
-            subprocess.call(["StackIt.exe", "%s/%s.txt"%(self.OutputPath, self.DeckName)])
-        else:
-            os.system('cd StackIt && python StackIt.py "%s/%s.txt"'%(self.OutputPath, self.DeckName))
+        #StackIt broke their windows EXE so always try to use the local python version
+        #if "windows" in platform.platform().lower():
+            #subprocess.call(["StackIt.exe", "%s/%s.txt"%(self.OutputPath, self.DeckName)])
+        #else:
+        os.system('cd StackIt && python StackIt.py "%s/%s.txt"'%(self.OutputPath, self.DeckName))
         FinalImageLocation = "%s/LastDeckExport.png"%(self.OutputPath)
         if os.path.isfile(FinalImageLocation):
             os.remove(FinalImageLocation)
