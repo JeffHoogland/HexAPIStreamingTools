@@ -241,10 +241,10 @@ elif deck_list.game == decklist.HEX:
         if nametitle.find(shard) != -1:
             nametitle = nametitle.replace(shard,'')
             newshard = Image.open(os.path.join('.','Mana',shard+'.png')).resize((20,20))
-            title.paste(newshard,(10+nshard*20,7))
+            title.paste(newshard,(55+nshard*20,7))
             nshard = nshard + 1
     drawtitle = ImageDraw.Draw(title)
-    drawtitle.text((15 + nshard * 20, 12), os.path.basename(nametitle), (250, 250, 250), font=fnt_title)
+    drawtitle.text((55 + nshard * 20, 12), os.path.basename(nametitle), (250, 250, 250), font=fnt_title)
 
 ncountMB = len(deck_list.mainboard)
 ncountSB = len(deck_list.sideboard)
