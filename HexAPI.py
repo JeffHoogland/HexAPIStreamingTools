@@ -21,6 +21,7 @@ class HexAPI():
             if self.config.get("General", "newconfig") == "True":
                 self.setupDefaultConfig()
         else:
+            shutil.copy("HexAPIPythonSettings-New.cfg", ConfigFile)
             self.setupDefaultConfig()
     
     def setupDefaultConfig(self):
